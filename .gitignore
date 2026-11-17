@@ -1,0 +1,43 @@
+# 가상환경
+.venv/
+venv/
+env/
+
+# Python 캐시 / 빌드 산출물
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# 환경 변수 (API 키 등)
+.env
+.env.*
+!.env.example
+
+# 테스트 / 도구 캐시
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# 에디터 / OS
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 로그
+*.log
+
+# API 응답 / 실행 결과로 생성되는 데이터 (check_maeulsup.py 실행 시 다시 생성됨)
+first_response.xml
+maeulsup_raw.csv
+maeulsup_raw.json

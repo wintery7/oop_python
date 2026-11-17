@@ -1,0 +1,3 @@
+# 줄바꿈(CRLF/LF) 자동 정규화
+* text=auto
+*.ipynb text eol=lf
