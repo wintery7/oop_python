@@ -118,6 +118,37 @@ class Wizard(Character):
         )
 
 
+# 문제 4. 잘못된 설계 고치기
+#
+# 1) 어색한 이유
+#    "캐릭터는 무기다(IS-A)"는 말이 안 되고 "캐릭터는 무기를 갖는다(HAS-A)"가 맞는 관계인데,
+#    상속을 써서 캐릭터를 무기의 한 종류로 만들어 버렸다.
+#
+# 2) 무기를 바꾸고 싶을 때의 문제점
+#    무기가 따로 있는 객체가 아니라 캐릭터 자신(부모 클래스)이라서, 게임 도중에 다른 무기 객체로 갈아 끼울 수 없다.
+#    self.power 숫자만 직접 고칠 수 있을 뿐, 무기 이름처럼 무기가 가진 다른 정보는 함께 바뀌지 않는다.
+#    새 무기 종류(활, 지팡이 등)를 쓰려면 Character 의 부모 클래스를 바꿔야 하는데, 부모는 클래스를 정의할 때 정해져 실행 중에 바꿀 수 없다.
+#
+# 3) 구성(HAS-A)으로 고친 코드
+#    → 위의 Character 클래스가 바로 이 방식이다. 핵심만 줄이면 아래와 같다.
+#
+#    class Weapon:
+#        def __init__(self, name, power):
+#            self.name = name
+#            self.power = power
+#
+#    class Character:
+#        def __init__(self, name, weapon):
+#            self.name = name
+#            self.weapon = weapon          # 상속 대신 무기를 "속성으로 가짐"
+#
+#        def change_weapon(self, weapon):  # 실행 중에도 무기 교체 가능
+#            self.weapon = weapon
+#
+#    c = Character("아서", Weapon("롱소드", 20))
+#    c.change_weapon(Weapon("전투도끼", 30))
+
+
 # 실행 코드
 if __name__ == "__main__":
     print("=== 문제 2 ===")
